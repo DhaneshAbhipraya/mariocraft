@@ -75,7 +75,7 @@ class MyGame(arcade.Window):
             self.wall_list.append(wall)
 
         # World Generation
-        seed(1)
+        # seed(1) # uncomment for set seed
         b = r(12,15)*SPRITE_SIZE
         for x in range(0, WORLD_SIZE, SPRITE_SIZE):
             b += r(r(-1,0),r(0,1))*SPRITE_SIZE
@@ -99,7 +99,7 @@ class MyGame(arcade.Window):
         
         # Set up the player
         self.player_sprite = arcade.Sprite("resources/images/entities/steve.png", SPRITE_SCALING)
-        self.player_sprite_behavior = 1 # 0 = terrestrial, 1 = flying
+        self.player_sprite_behavior = 0 # 0 = terrestrial, 1 = flying
         self.player_inpipe = False
         self.entity_list.append(self.player_sprite)
 
@@ -128,8 +128,6 @@ class MyGame(arcade.Window):
             self.physics_engine_entity.append(arcade.PhysicsEnginePlatformer(entity, self.wall_list, GRAVITY))
 
         self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite, [self.wall_list,self.pipe_list], GRAVITY)
-        self.physics_engine.allow_multi_jump = True
-        self.physics_engine.allowed_jumps = 2
 
         # Set the background color
         arcade.set_background_color(arcade.color.AMAZON)
