@@ -1,5 +1,3 @@
-import ctypes
-from logging import debug
 from random import choice, randint as r, seed
 import threading
 import arcade,os
